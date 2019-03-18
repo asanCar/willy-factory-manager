@@ -48,7 +48,7 @@ public class OompaServiceImplTest {
         List<OompaDTO> outcome = sut.getAllOompa();
 
         //then
-        assertThat(outcome).isEqualTo(getExampleOompaDTOs());
+        assertThat(outcome).isEqualTo(getExampleOompaDTOList());
         verify(repository).findAll();
     }
 

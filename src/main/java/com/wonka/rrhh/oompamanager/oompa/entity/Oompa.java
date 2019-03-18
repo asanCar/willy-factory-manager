@@ -3,7 +3,6 @@ package com.wonka.rrhh.oompamanager.oompa.entity;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,35 +15,35 @@ public class Oompa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    @ApiModelProperty(value = "Oompa Lumpa's ID", position = 1)
+    @ApiModelProperty(value = "Oompa Loompa's ID", position = 1)
     private long id;
 
     @Column(name = "name", nullable = false)
     @NotBlank
-    @ApiModelProperty(value = "Oompa Lumpa's name", position = 2, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's name", position = 2, required = true)
     private String name;
 
     @Column(name = "age", nullable = false)
     @Min(16)
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's age", position = 3, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's age", position = 3, required = true)
     private int age;
 
     @Column(name = "job", nullable = false)
     @NotBlank
-    @ApiModelProperty(value = "Oompa Lumpa's job position", position = 4, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's job position", position = 4, required = true)
     private String job;
 
     @Column(name = "height")
-    @ApiModelProperty(value = "Oompa Lumpa's height", position = 5)
+    @ApiModelProperty(value = "Oompa Loompa's height", position = 5)
     private float height;
 
     @Column(name = "weight")
-    @ApiModelProperty(value = "Oompa Lumpa's weight", position = 6)
+    @ApiModelProperty(value = "Oompa Loompa's weight", position = 6)
     private float weight;
 
     @Column(name = "description")
-    @ApiModelProperty(value = "Oompa Lumpa's description", position = 7)
+    @ApiModelProperty(value = "Oompa Loompa's description", position = 7)
     private String description;
 
     public Oompa(@NotBlank String name, @Min(16) @NotNull int age, @NotBlank String job) {

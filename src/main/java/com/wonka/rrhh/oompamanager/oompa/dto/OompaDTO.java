@@ -8,19 +8,19 @@ import java.util.Objects;
 
 public class OompaDTO {
 
-    @ApiModelProperty(value = "Oompa Lumpa's ID", position = 1)
+    @ApiModelProperty(value = "Oompa Loompa's ID", position = 1)
     private long id;
 
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's name", position = 2, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's name", position = 2, required = true)
     private String name;
 
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's age", position = 3, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's age", position = 3, required = true)
     private int age;
 
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's job position", position = 4, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's job position", position = 4, required = true)
     private String job;
 
     public OompaDTO(@NotNull String name, @NotNull int age, @NotNull String job) {

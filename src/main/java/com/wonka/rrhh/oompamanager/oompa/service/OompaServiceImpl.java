@@ -35,7 +35,7 @@ public class OompaServiceImpl implements OompaService {
     public Oompa getOompaDetail(long id) {
         final Optional<Oompa> oompa = repository.findById(id);
         return oompa
-                .orElseThrow(() -> new ResourceNotFoundException("Oompa Lumpa", "id", String.format("%d", id)));
+                .orElseThrow(() -> new ResourceNotFoundException("Oompa Loompa", "id", String.format("%d", id)));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class OompaServiceImpl implements OompaService {
         if (repository.existsById(id)) {
             return addOompa(oompa);
         } else {
-            throw new ResourceNotFoundException("Oompa Lumpa", "id", String.format("%d", id));
+            throw new ResourceNotFoundException("Oompa Loompa", "id", String.format("%d", id));
         }
     }
 
@@ -57,7 +57,7 @@ public class OompaServiceImpl implements OompaService {
         if (repository.existsById(id)) {
             repository.deleteById(id);
         } else {
-            throw new ResourceNotFoundException("Oompa Lumpa", "id", String.format("%d", id));
+            throw new ResourceNotFoundException("Oompa Loompa", "id", String.format("%d", id));
         }
     }
 }

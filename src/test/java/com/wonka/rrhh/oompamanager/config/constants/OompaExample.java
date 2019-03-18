@@ -35,7 +35,11 @@ public class OompaExample {
         return iterable;
     }
 
-    public static List<OompaDTO> getExampleOompaDTOs() {
+    public static OompaDTO getExampleOompaDTO() {
+        return new OompaDTO(NAMES[0], AGES[0], JOBS[0]);
+    }
+
+    public static List<OompaDTO> getExampleOompaDTOList() {
         final List<OompaDTO> iterable = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             final OompaDTO oompa = new OompaDTO(NAMES[i], AGES[i], JOBS[i]);

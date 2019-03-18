@@ -19,7 +19,7 @@ import static com.wonka.rrhh.oompamanager.config.constants.OompaRestConstants.BA
 
 @RestController
 @RequestMapping(BASE_URI + "/oompas")
-@Api("Oompa Lumpa's REST Controller")
+@Api("Oompa Loompa's REST Controller")
 public class OompaRestController {
 
     private final OompaService oompaService;
@@ -30,15 +30,15 @@ public class OompaRestController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Get all Oompa Loompa")
+    @ApiOperation(value = "Get a list of all Oompa Loompa")
     public List<OompaDTO> getAllOompa() {
 
         return oompaService.getAllOompa();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Get all information from a Oompa Loompa")
-    public Oompa getOompaDetail(@ApiParam(value = "Oompa Loompa's Id", required = true) @PathVariable Long id){
+    @ApiOperation(value = "Get the full detail of an Oompa Loompa")
+    public Oompa getOompaDetail(@ApiParam(value = "Oompa Loompa's Id", required = true) @PathVariable Long id) {
         return oompaService.getOompaDetail(id);
     }
 }

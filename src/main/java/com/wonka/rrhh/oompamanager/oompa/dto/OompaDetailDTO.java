@@ -9,24 +9,24 @@ import java.util.Objects;
 public class OompaDetailDTO {
 
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's name", position = 1, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's name", position = 1, required = true)
     private String name;
 
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's age", position = 2, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's age", position = 2, required = true)
     private int age;
 
     @NotNull
-    @ApiModelProperty(value = "Oompa Lumpa's job position", position = 3, required = true)
+    @ApiModelProperty(value = "Oompa Loompa's job position", position = 3, required = true)
     private String job;
 
-    @ApiModelProperty(value = "Oompa Lumpa's height", position = 4)
+    @ApiModelProperty(value = "Oompa Loompa's height", position = 4)
     private float height;
 
-    @ApiModelProperty(value = "Oompa Lumpa's weight", position = 5)
+    @ApiModelProperty(value = "Oompa Loompa's weight", position = 5)
     private float weight;
 
-    @ApiModelProperty(value = "Oompa Lumpa's description", position = 6)
+    @ApiModelProperty(value = "Oompa Loompa's description", position = 6)
     private String description;
 
     public OompaDetailDTO(@NotNull String name, @NotNull int age, @NotNull String job, float height, float weight,
@@ -40,7 +40,8 @@ public class OompaDetailDTO {
     }
 
     public OompaDetailDTO(Oompa oompa) {
-        this(oompa.getName(), oompa.getAge(), oompa.getJob(), oompa.getHeight(), oompa.getWeight(), oompa.getDescription());
+        this(oompa.getName(), oompa.getAge(), oompa.getJob(), oompa.getHeight(), oompa.getWeight(),
+                oompa.getDescription());
     }
 
     public String getName() {

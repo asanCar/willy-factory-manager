@@ -11,6 +11,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import static com.wonka.rrhh.oompamanager.config.constants.SpringConfigConstants.BASE_PACKAGE;
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -18,7 +20,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(getApiInfo());
@@ -26,8 +28,8 @@ public class SwaggerConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
-                .title("Oompa Lumpa REST API")
-                .description("Oompa Lumpa REST API for Wonka's HR department")
+                .title("Oompa Loompa REST API")
+                .description("Oompa Loompa REST API for Wonka's HR department")
                 .contact(new Contact("Alejandro Sanchez", "", "a.sanchez3329@gmail.com"))
                 .build();
     }
