@@ -24,42 +24,51 @@ public class OompaDTO {
     private String job;
 
     public OompaDTO(@NotNull String name, @NotNull int age, @NotNull String job) {
+
         this.name = name;
         this.age = age;
         this.job = job;
     }
 
     public OompaDTO(Oompa oompa) {
+
         this(oompa.getName(), oompa.getAge(), oompa.getJob());
         this.id = oompa.getId();
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public int getAge() {
+
         return age;
     }
 
     public void setAge(int age) {
+
         this.age = age;
     }
 
     public String getJob() {
+
         return job;
     }
 
     public void setJob(String job) {
+
         this.job = job;
     }
 
     @Override
     public String toString() {
+
         return "OompaDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
@@ -70,6 +79,7 @@ public class OompaDTO {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (!(o instanceof OompaDTO)) return false;
         OompaDTO oompaDTO = (OompaDTO) o;
@@ -80,6 +90,7 @@ public class OompaDTO {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(getName(), getAge(), getJob());
     }
 }

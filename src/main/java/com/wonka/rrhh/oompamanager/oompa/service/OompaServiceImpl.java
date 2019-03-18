@@ -1,6 +1,6 @@
 package com.wonka.rrhh.oompamanager.oompa.service;
 
-import com.wonka.rrhh.oompamanager.eceptions.ResourceNotFoundException;
+import com.wonka.rrhh.oompamanager.exceptions.ResourceNotFoundException;
 import com.wonka.rrhh.oompamanager.oompa.dto.OompaDTO;
 import com.wonka.rrhh.oompamanager.oompa.entity.Oompa;
 import com.wonka.rrhh.oompamanager.oompa.repository.OompaRepository;
@@ -18,11 +18,13 @@ public class OompaServiceImpl implements OompaService {
 
     @Autowired
     public OompaServiceImpl(OompaRepository repository) {
+
         this.repository = repository;
     }
 
     @Override
     public List<OompaDTO> getAllOompa() {
+
         final List<OompaDTO> result = new ArrayList<>();
         for (Oompa oompa : repository.findAll()) {
             result.add(new OompaDTO(oompa));
@@ -32,32 +34,32 @@ public class OompaServiceImpl implements OompaService {
     }
 
     @Override
-    public Oompa getOompaDetail(long id) {
+    public Oompa getOompaDetail(final Long id) {
+
         final Optional<Oompa> oompa = repository.findById(id);
         return oompa
-                .orElseThrow(() -> new ResourceNotFoundException("Oompa Loompa", "id", String.format("%d", id)));
+                .orElseThrow(() -> getResourceNotFoundException(String.valueOf(id)));
     }
 
     @Override
-    public Oompa addOompa(Oompa oompa) {
+    public Oompa addOompa(final Oompa oompa) {
+
         return repository.save(oompa);
     }
 
     @Override
-    public Oompa updateOompa(Long id, Oompa oompa) {
+    public Oompa updateOompa(final Long id, final Oompa oompa) {
+
         if (repository.existsById(id)) {
-            return addOompa(oompa);
+            oompa.setId(id);
+            return repository.save(oompa);
         } else {
-            throw new ResourceNotFoundException("Oompa Loompa", "id", String.format("%d", id));
+            throw getResourceNotFoundException(String.valueOf(id));
         }
     }
 
-    @Override
-    public void deleteOompa(Long id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-        } else {
-            throw new ResourceNotFoundException("Oompa Loompa", "id", String.format("%d", id));
-        }
+    private ResourceNotFoundException getResourceNotFoundException(final String id) {
+
+        return new ResourceNotFoundException("Oompa Loompa", "id", id);
     }
 }

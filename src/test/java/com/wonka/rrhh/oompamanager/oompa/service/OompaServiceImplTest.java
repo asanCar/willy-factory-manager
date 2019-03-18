@@ -1,6 +1,6 @@
 package com.wonka.rrhh.oompamanager.oompa.service;
 
-import com.wonka.rrhh.oompamanager.eceptions.ResourceNotFoundException;
+import com.wonka.rrhh.oompamanager.exceptions.ResourceNotFoundException;
 import com.wonka.rrhh.oompamanager.oompa.dto.OompaDTO;
 import com.wonka.rrhh.oompamanager.oompa.entity.Oompa;
 import com.wonka.rrhh.oompamanager.oompa.repository.OompaRepository;
@@ -39,7 +39,7 @@ public class OompaServiceImplTest {
     }
 
     @Test
-    public void getAllOompaShouldReturnOompasList() {
+    public void getAllOompaShouldReturnOompaList() {
         //given
         List<Oompa> iterable = getExampleOompaList();
         when(repository.findAll()).thenReturn(iterable);
@@ -104,19 +104,6 @@ public class OompaServiceImplTest {
         verify(repository).save(any(Oompa.class));
     }
 
-//    @Test
-//    public void oompaShouldNotBeAdded() {
-//        //given
-//        final Oompa oompa = new Oompa("", 0, "");
-//        when(repository.save(any(Oompa.class))).thenReturn(oompa);
-//
-//        //when
-//        final Oompa outcome = sut.addOompa(oompa);
-//
-//        //then
-//        assertThat(outcome).isEqualTo(oompa);
-//    }
-
     @Test
     public void oompaShouldBeUpdated() {
         //given
@@ -134,34 +121,12 @@ public class OompaServiceImplTest {
     }
 
     @Test(expected = ResourceNotFoundException.class)
-    public void updateOompaShoulThrowResourceNotFoundException() {
+    public void updateOompaShouldThrowResourceNotFoundException() {
         //given
         final Oompa oompa = getExampleOompa();
         when(repository.existsById(anyLong())).thenReturn(FALSE);
 
         //when
         sut.updateOompa(ANY_ID, oompa);
-    }
-
-    @Test
-    public void oompaShouldBeDeleted() {
-        //given
-        when(repository.existsById(anyLong())).thenReturn(TRUE);
-
-        //when
-        sut.deleteOompa(ANY_ID);
-
-        //then
-        verify(repository).existsById(ANY_ID);
-        verify(repository).deleteById(ANY_ID);
-    }
-
-    @Test(expected = ResourceNotFoundException.class)
-    public void deleteOompaShouldThrowResourceNotFoundException() {
-        //given
-        when(repository.existsById(anyLong())).thenReturn(FALSE);
-
-        //when
-        sut.deleteOompa(ANY_ID);
     }
 }
