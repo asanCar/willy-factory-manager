@@ -4,6 +4,8 @@ import com.wonka.rrhh.oompamanager.exceptions.ResourceNotFoundException;
 import com.wonka.rrhh.oompamanager.oompa.dto.OompaDTO;
 import com.wonka.rrhh.oompamanager.oompa.entity.Oompa;
 import com.wonka.rrhh.oompamanager.oompa.repository.OompaRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class OompaServiceImpl implements OompaService {
 
     private final OompaRepository repository;
+
+    private final Logger log = LoggerFactory.getLogger(OompaServiceImpl.class);
 
     @Autowired
     public OompaServiceImpl(OompaRepository repository) {
@@ -29,6 +33,7 @@ public class OompaServiceImpl implements OompaService {
         for (Oompa oompa : repository.findAll()) {
             result.add(new OompaDTO(oompa));
         }
+        log.info("Retrieving Oompa List: " + result);
 
         return result;
     }
@@ -37,6 +42,11 @@ public class OompaServiceImpl implements OompaService {
     public Oompa getOompaDetail(final Long id) {
 
         final Optional<Oompa> oompa = repository.findById(id);
+
+        if (oompa.isPresent()) {
+            log.info("Oompa with id " + id + ": " + oompa);
+        }
+
         return oompa
                 .orElseThrow(() -> getResourceNotFoundException(String.valueOf(id)));
     }
@@ -44,7 +54,10 @@ public class OompaServiceImpl implements OompaService {
     @Override
     public Oompa addOompa(final Oompa oompa) {
 
-        return repository.save(oompa);
+        final Oompa oompaSaved = repository.save(oompa);
+        log.info("Oompa saved: " + oompaSaved);
+
+        return oompaSaved;
     }
 
     @Override
@@ -52,13 +65,18 @@ public class OompaServiceImpl implements OompaService {
 
         if (repository.existsById(id)) {
             oompa.setId(id);
-            return repository.save(oompa);
+            final Oompa oompaSaved = repository.save(oompa);
+            log.info("Oompa updated: " + oompaSaved);
+
+            return oompaSaved;
         } else {
             throw getResourceNotFoundException(String.valueOf(id));
         }
     }
 
     private ResourceNotFoundException getResourceNotFoundException(final String id) {
+
+        log.error("Oompa Loompa with id " + id + " not found.");
 
         return new ResourceNotFoundException("Oompa Loompa", "id", id);
     }
