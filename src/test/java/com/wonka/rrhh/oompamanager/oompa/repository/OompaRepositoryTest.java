@@ -128,19 +128,4 @@ public class OompaRepositoryTest {
         //then
         assertThat(outcome).isEqualTo(oompaList);
     }
-
-    @Test
-    public void deleteByIdShouldRemoveOompa() {
-        //given
-        final Oompa oompa = getExampleOompa();
-        final Long index = (Long) entityManager.persistAndGetId(oompa);
-        entityManager.flush();
-
-        //when
-        sut.deleteById(index);
-        entityManager.flush();
-
-        //then
-        assertThat(sut.findById(index).isPresent()).isFalse();
-    }
 }

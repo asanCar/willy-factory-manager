@@ -16,8 +16,10 @@ import static com.wonka.rrhh.oompamanager.config.constants.SpringConfigConstants
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
     @Bean
     public Docket api() {
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
@@ -27,6 +29,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo getApiInfo() {
+
         return new ApiInfoBuilder()
                 .title("Oompa Loompa REST API")
                 .description("Oompa Loompa REST API for Wonka's HR department")

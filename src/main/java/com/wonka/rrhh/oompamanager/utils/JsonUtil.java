@@ -6,27 +6,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class JsonUtil {
+public enum JsonUtil {
 
-    public static <T> String marshall(T object) {
+    INSTANCE;
+
+    public <T> String marshall(final T object) throws JsonProcessingException {
+
         final ObjectMapper objectMapper = new ObjectMapper();
 
-        try {
-            return objectMapper.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            //log
-            return null;
-        }
+        return objectMapper.writeValueAsString(object);
     }
 
-    public static <T> T unmarshall(String json, TypeReference<T> type) {
+    public <T> T unmarshall(final String json, final TypeReference<T> type) throws IOException {
+
         final ObjectMapper objectMapper = new ObjectMapper();
 
-        try {
-            return objectMapper.readValue(json, type);
-        } catch (IOException e) {
-            //log
-            return null;
-        }
+        return objectMapper.readValue(json, type);
     }
 }

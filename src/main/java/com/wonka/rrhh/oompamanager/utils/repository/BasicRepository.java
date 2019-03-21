@@ -7,6 +7,7 @@ import java.util.Optional;
 
 @NoRepositoryBean
 public interface BasicRepository<T, ID> extends Repository<T, ID> {
+
     <S extends T> S save(S var1);
 
     boolean existsById(ID var1);
@@ -16,8 +17,4 @@ public interface BasicRepository<T, ID> extends Repository<T, ID> {
     Iterable<T> findAll();
 
     Iterable<T> findAllById(Iterable<ID> var1);
-
-    void deleteById(ID var1);
-
-//    void delete(T var1);
 }

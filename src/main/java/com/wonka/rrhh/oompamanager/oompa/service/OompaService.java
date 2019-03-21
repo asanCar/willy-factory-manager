@@ -9,11 +9,9 @@ public interface OompaService {
 
     List<OompaDTO> getAllOompa();
 
-    Oompa getOompaDetail(long id);
+    Oompa getOompaDetail(Long id);
 
     Oompa addOompa(Oompa oompa);
 
     Oompa updateOompa(Long id, Oompa oompa);
-
-    void deleteOompa(Long id);
 }
